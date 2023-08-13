@@ -119,5 +119,15 @@ namespace Personel_Kayit
                 rdBekar.Checked = true;
             }
         }
+
+        private void btnSil_Click(object sender, EventArgs e)
+        {
+            baglanti.Open();
+            SqlCommand komutSil = new SqlCommand("Delete From Tbl_Personel where Personelid=@k1", baglanti);
+            komutSil.Parameters.AddWithValue("@k1", txtPersonelid.Text);
+            komutSil.ExecuteNonQuery();
+            baglanti.Close();
+            MessageBox.Show("Kayıt silindi");
+        }
     }
 }
