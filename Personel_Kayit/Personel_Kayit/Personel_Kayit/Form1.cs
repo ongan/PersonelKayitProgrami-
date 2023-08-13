@@ -69,12 +69,21 @@ namespace Personel_Kayit
 
         private void rdEvli_CheckedChanged(object sender, EventArgs e)
         {
-            label8.Text = "True";
+           
+            if (rdEvli.Checked == true)
+            {
+               label8.Text="True";
+            }
         }
 
         private void rdBekar_CheckedChanged(object sender, EventArgs e)
         {
-            label8.Text = "False";
+            
+            if (rdBekar.Checked == true)
+            {
+                label8.Text = "False";
+                
+            }
         }
 
         private void btnTemizle_Click(object sender, EventArgs e)
@@ -84,8 +93,31 @@ namespace Personel_Kayit
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            int secilen = dataGridView1.SelectedCells[0].RowIndex; 
+            int secilen = dataGridView1.SelectedCells[0].RowIndex;
             // böylece data gridde herhangi bir hücreye tıklayınca secilen adlı bir değişkene atamış olduk
+            txtPersonelid.Text = dataGridView1.Rows[secilen].Cells[0].Value.ToString();
+            txtPersonelAd.Text = dataGridView1.Rows[secilen].Cells[1].Value.ToString();
+            txtPersonelSoyad.Text = dataGridView1.Rows[secilen].Cells[2].Value.ToString();
+            cmbxPersonelSehir.Text = dataGridView1.Rows[secilen].Cells[3].Value.ToString();
+            mskttxtPersonelMaas.Text = dataGridView1.Rows[secilen].Cells[4].Value.ToString();
+            label8.Text = dataGridView1.Rows[secilen].Cells[5].Value.ToString();
+            TxtPersonelMeslek.Text = dataGridView1.Rows[secilen].Cells[6].Value.ToString();
+            
+           
+
+            // bu kodlarla mesela personel id sini datagridview den bir satıra tıklayınca secilen değişkenindeki degere referans alıp oradaki 0 numaralı hücrenin içindeki degeri personelid adlı değişkene taşı demiş olduk.
+        }
+
+        private void label8_TextChanged(object sender, EventArgs e)
+        {
+            if (label8.Text == "True")
+            {
+                rdEvli.Checked = true;
+            }
+            if (label8.Text == "False")
+            {
+                rdBekar.Checked = true;
+            }
         }
     }
 }
